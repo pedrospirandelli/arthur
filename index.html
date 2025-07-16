@@ -1,36 +1,102 @@
 <!DOCTYPE html>
-<html>
-<!---The following can be changed to modify this countdown for anything --->
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <!--- Tab Name ---> 
-  <title>Contagem Regressiva Arthur</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idade do Bebê</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <!-- Name of countdown --->
-  <h1>Contagem regressiva para o Arthur nascer!</h1>
+  <h1>Tempo de vida do Arthur! ❤️</h1>
+
   <div class="countdown-container">
-    <div class="countdown-el days-c">
-      <p class= "big-text" id="days"> 0</p>
+    <div class="countdown-el">
+      <p class="big-text" id="years">0</p>
+      <span>Anos</span>
+    </div>
+    <div class="countdown-el">
+      <p class="big-text" id="months">0</p>
+      <span>Meses</span>
+    </div>
+    <div class="countdown-el">
+      <p class="big-text" id="days">0</p>
       <span>Dias</span>
     </div>
-    <div class="countdown-el hours-c">
-      <p class= "big-text" id="hours"> 0</p>
+    <div class="countdown-el">
+      <p class="big-text" id="hours">0</p>
       <span>Horas</span>
     </div>
-    <div class="countdown-el min-c">
-      <p class= "big-text" id="min">0</p>
+    <div class="countdown-el">
+      <p class="big-text" id="min">0</p>
       <span>Minutos</span>
     </div>
-    <div class="countdown-el sec-c">
-      <p class= "big-text" id="sec">0</p>
+    <div class="countdown-el">
+      <p class="big-text" id="sec">0</p>
       <span>Segundos</span>
     </div>
   </div>
-<script src="script.js"></script>
-</body>
 
+<script>
+    // --- IMPORTANTE: COLOQUE A DATA E HORA DE NASCIMENTO AQUI ---
+    // Formato: Ano, Mês (0-11), Dia, Hora, Minuto, Segundo
+    const dataNascimento = new Date(2025, 6, 15, 13, 55, 0); // Exemplo: 25 de Novembro de 2023, às 14:30
+
+    // Seleciona os elementos da página que mostrarão os números
+    const yearsEl = document.getElementById('years');
+    const monthsEl = document.getElementById('months');
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minEl = document.getElementById('min');
+    const secEl = document.getElementById('sec');
+
+    function calcularIdade() {
+        const agora = new Date();
+        
+        let anos = agora.getFullYear() - dataNascimento.getFullYear();
+        let meses = agora.getMonth() - dataNascimento.getMonth();
+        let dias = agora.getDate() - dataNascimento.getDate();
+        let horas = agora.getHours() - dataNascimento.getHours();
+        let minutos = agora.getMinutes() - dataNascimento.getMinutes();
+        let segundos = agora.getSeconds() - dataNascimento.getSeconds();
+
+        // Ajustes para valores negativos (quando a data/hora atual ainda não "passou" a do nascimento no ciclo)
+        if (segundos < 0) {
+            minutos--;
+            segundos += 60;
+        }
+        if (minutos < 0) {
+            horas--;
+            minutos += 60;
+        }
+        if (horas < 0) {
+            dias--;
+            horas += 24;
+        }
+        if (dias < 0) {
+            meses--;
+            // Pega o último dia do mês anterior para calcular a diferença de dias correta
+            dias += new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+        }
+        if (meses < 0) {
+            anos--;
+            meses += 12;
+        }
+
+        // Atualiza os valores na página
+        yearsEl.textContent = anos;
+        monthsEl.textContent = meses;
+        daysEl.textContent = dias;
+        hoursEl.textContent = horas;
+        minEl.textContent = minutos;
+        secEl.textContent = segundos;
+    }
+
+    // Chama a função a cada segundo para manter o contador atualizado
+    setInterval(calcularIdade, 1000);
+
+    // Chama a função uma vez no início
+    calcularIdade();
+</script>
+</body>
 </html>

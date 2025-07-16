@@ -1,99 +1,85 @@
-/* -The following can be changed to modify this countdown for anything */
+/* Importa a fonte do Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap");
 
 * {
   box-sizing: border-box;
-  
+  margin: 0;
+  padding: 0;
 }
 
-body{
-  /* Changing the background picture *** Note: Save the imasge to the Pictures file and reroute the back part of the URL to the name of your image.  */
-  background-image:url("Pictures/arthur.jpeg");
+body {
+  /* --- IMAGEM DE FUNDO PADRÃO (PARA DESKTOP/TELAS LARGAS) --- */
+  background-image: url("Pictures/arthurhorizontal.jpg"); /* << Altere para sua foto horizontal */
+  
   background-size: cover;
   background-position: center center;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  
+  /* Layout e Fonte */
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center; 
-  min-height: 100vh; 
-  /* Can change the font ***Note: you may want to look up google fonts and pick one from there, replace @import Url with the code of your choosing, then replace the font in '...' with the font name you chose*** */
-  font-family: 'Libre Baskerville' ,serif;
-  color: #FFFFFF;
-  margin: 1rem;
-}
-
-h1{
-  font-weight: normal;
-  font-size: 4rem;
-}
-
-.countdown-container{
-  display:flex;
-  flex-wrap: wrap;
-  align-items:center; 
   justify-content: center;
-}
-
-.big-text{
-  font-weight: bold;
-  font-size: 6rem;
-  line-height: 1;
-  margin: 0 2rem;
-}
-
-.countdown-el{
+  min-height: 100vh;
+  font-family: 'Libre Baskerville', serif;
+  color: #252556;
   text-align: center;
+  padding: 1rem;
 }
 
-.countdown-el span{
-  font-size: 1.3rem;
+h1 {
+  font-weight: normal;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
 }
 
-@media only screen and (max-width: 768px) {
-  body {
-    background-image: url("Pictures/arthurvertical.jpeg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    font-family: 'Libre Baskerville', serif;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-  }
+.countdown-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: center;
+}
 
+.countdown-el {
+  margin: 0.5rem 1rem;
+}
+
+.big-text {
+  font-weight: bold;
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.countdown-el span {
+  font-size: 1rem;
+}
+
+/* --- ESTILOS PARA TELAS GRANDES (Computadores) --- */
+/* Aplicado quando a tela for maior que 768px */
+@media (min-width: 768px) {
   h1 {
-    text-align: center;
-    font-weight: normal;
-    font-size: 2rem; /* menor título */
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding: 0 1rem;
-    line-height: 1.2;
-  }
-
-  .countdown-container {
-    flex-direction: column; /* um abaixo do outro */
-    align-items: center;
-    width: 100vw;
-    padding: 0 1rem;
-  }
-
-  .big-text {
-    font-size: 3rem; /* menor número */
-    margin: 0.5rem 0;
+    font-size: 4rem;
   }
 
   .countdown-el {
-    width: 100%;
-    margin-bottom: 1.5rem;
+    margin: 0 2rem;
+  }
+
+  .big-text {
+    font-size: 6rem;
   }
 
   .countdown-el span {
-    font-size: 1rem;
-    display: block;
-    margin-top: 0.3rem;
+    font-size: 1.3rem;
+  }
+}
+
+/* --- ESTILOS PARA TELAS PEQUENAS (Celular/Vertical) --- */
+/* Aplicado quando a tela for menor ou igual a 767px */
+@media (max-width: 767px) {
+  body {
+    /* --- NOVA IMAGEM DE FUNDO (PARA CELULAR/TELAS VERTICAIS) --- */
+    background-image: url("Pictures/arthurvertical.jpg"); /* << Altere para sua foto vertical */
   }
 }
